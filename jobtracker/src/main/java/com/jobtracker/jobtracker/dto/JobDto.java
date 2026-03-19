@@ -13,7 +13,6 @@ import java.util.List;
 
 public class JobDto {
 
-    // ── Request DTOs ──────────────────────────────────────────────────────────
 
     @Data
     public static class CreateJobRequest {
@@ -54,8 +53,6 @@ public class JobDto {
 
         private String notes;
     }
-
-    // ── Response DTOs ─────────────────────────────────────────────────────────
 
     @Data
     public static class JobResponse {

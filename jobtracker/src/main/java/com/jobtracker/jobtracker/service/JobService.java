@@ -22,7 +22,6 @@ public class JobService {
     private final JobRepository jobRepository;
     private final InterviewRepository interviewRepository;
 
-    // ── Create Job ────────────────────────────────────────────────────────────
     @Transactional
     public JobDto.JobResponse createJob(JobDto.CreateJobRequest request) {
         Job job = Job.builder()
@@ -39,7 +38,6 @@ public class JobService {
         return toJobResponse(jobRepository.save(job));
     }
 
-    // ── Get All Jobs ──────────────────────────────────────────────────────────
     @Transactional(readOnly = true)
     public List<JobDto.JobResponse> getAllJobs(ApplicationStatus status, LocalDate from, LocalDate to, String company) {
         List<Job> jobs;
@@ -59,13 +57,11 @@ public class JobService {
         return jobs.stream().map(this::toJobResponse).collect(Collectors.toList());
     }
 
-    // ── Get Single Job ────────────────────────────────────────────────────────
     @Transactional(readOnly = true)
     public JobDto.JobResponse getJob(Long id) {
         return toJobResponse(findJobById(id));
     }
 
-    // ── Update Status ─────────────────────────────────────────────────────────
     @Transactional
     public JobDto.JobResponse updateStatus(Long id, JobDto.UpdateStatusRequest request) {
         Job job = findJobById(id);
@@ -73,7 +69,6 @@ public class JobService {
         return toJobResponse(jobRepository.save(job));
     }
 
-    // ── Log Interview ─────────────────────────────────────────────────────────
     @Transactional
     public JobDto.JobResponse addInterview(Long jobId, JobDto.CreateInterviewRequest request) {
         Job job = findJobById(jobId);
@@ -88,7 +83,6 @@ public class JobService {
 
         interviewRepository.save(interview);
 
-        // Auto-advance status to INTERVIEW if still at APPLIED or SHORTLISTED
         if (job.getStatus() == ApplicationStatus.Applied
                 || job.getStatus() == ApplicationStatus.Shortlisted) {
             job.setStatus(ApplicationStatus.Interview);
@@ -119,7 +113,6 @@ public class JobService {
         return stats;
     }
 
-    // ── Helpers ───────────────────────────────────────────────────────────────
     private Job findJobById(Long id) {
         return jobRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Job not found with id: " + id));

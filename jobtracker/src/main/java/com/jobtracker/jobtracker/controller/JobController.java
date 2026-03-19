@@ -20,14 +20,12 @@ public class JobController {
 
     private final JobService jobService;
 
-    // POST /api/jobs — Add a new job application
     @PostMapping
     public ResponseEntity<JobDto.JobResponse> createJob(
             @Valid @RequestBody JobDto.CreateJobRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(jobService.createJob(request));
     }
 
-    // GET /api/jobs — List all jobs with optional filters
     @GetMapping
     public ResponseEntity<List<JobDto.JobResponse>> getAllJobs(
             @RequestParam(required = false) ApplicationStatus status,
@@ -38,13 +36,11 @@ public class JobController {
         return ResponseEntity.ok(jobService.getAllJobs(status, from, to, company));
     }
 
-    // GET /api/jobs/{id} — Get single job with interview history
     @GetMapping("/{id}")
     public ResponseEntity<JobDto.JobResponse> getJob(@PathVariable Long id) {
         return ResponseEntity.ok(jobService.getJob(id));
     }
 
-    // PUT /api/jobs/{id}/status — Update application status
     @PutMapping("/{id}/status")
     public ResponseEntity<JobDto.JobResponse> updateStatus(
             @PathVariable Long id,
@@ -52,7 +48,6 @@ public class JobController {
         return ResponseEntity.ok(jobService.updateStatus(id, request));
     }
 
-    // POST /api/jobs/{id}/interview — Log an interview round
     @PostMapping("/{id}/interview")
     public ResponseEntity<JobDto.JobResponse> addInterview(
             @PathVariable Long id,
@@ -60,7 +55,6 @@ public class JobController {
         return ResponseEntity.status(HttpStatus.CREATED).body(jobService.addInterview(id, request));
     }
 
-    // GET /api/jobs/stats — Get aggregate stats
     @GetMapping("/stats")
     public ResponseEntity<JobDto.StatsResponse> getStats() {
         return ResponseEntity.ok(jobService.getStats());
