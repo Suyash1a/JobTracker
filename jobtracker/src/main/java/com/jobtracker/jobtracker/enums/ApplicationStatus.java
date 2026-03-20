@@ -7,3 +7,5 @@ public enum ApplicationStatus {
     Offer,
     Rejected
 }
+
+// In this file I am declaring enums to track application status of the application that I am applying to.
