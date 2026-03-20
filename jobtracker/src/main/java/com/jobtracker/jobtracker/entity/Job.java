@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
+import com.jobtracker.jobtracker.enums.CompanyTag;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -50,6 +50,9 @@ public class Job {
     private ApplicationStatus status = ApplicationStatus.Applied;
 
     private String notes;
+
+    @Enumerated(EnumType.STRING)
+    private CompanyTag companyTag;
 
     @Column(name = "follow_up_date")
     private LocalDate followUpDate;

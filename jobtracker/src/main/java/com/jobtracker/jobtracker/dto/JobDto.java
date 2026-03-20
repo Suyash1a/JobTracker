@@ -6,7 +6,7 @@ import com.jobtracker.jobtracker.enums.JobSource;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
+import com.jobtracker.jobtracker.enums.CompanyTag;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,6 +32,8 @@ public class JobDto {
 
         private String notes;
         private LocalDate followUpDate;
+        private CompanyTag companyTag;
+
     }
 
     @Data
@@ -68,6 +70,7 @@ public class JobDto {
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
         private List<InterviewResponse> interviews;
+        private CompanyTag companyTag;
     }
 
     @Data

@@ -32,6 +32,7 @@ public class JobService {
                 .source(request.getSource())
                 .notes(request.getNotes())
                 .followUpDate(request.getFollowUpDate())
+                .companyTag(request.getCompanyTag())
                 .status(ApplicationStatus.Applied)
                 .build();
 
@@ -131,7 +132,7 @@ public class JobService {
         response.setFollowUpDate(job.getFollowUpDate());
         response.setCreatedAt(job.getCreatedAt());
         response.setUpdatedAt(job.getUpdatedAt());
-
+        response.setCompanyTag(job.getCompanyTag());
         List<JobDto.InterviewResponse> interviews = job.getInterviews().stream()
                 .map(this::toInterviewResponse)
                 .collect(Collectors.toList());
