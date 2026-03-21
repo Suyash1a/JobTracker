@@ -1,5 +1,4 @@
 package com.jobtracker.jobtracker.controller;
-
 import com.jobtracker.jobtracker.dto.JobDto;
 import com.jobtracker.jobtracker.enums.ApplicationStatus;
 import com.jobtracker.jobtracker.service.JobService;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/jobs")
 @RequiredArgsConstructor
