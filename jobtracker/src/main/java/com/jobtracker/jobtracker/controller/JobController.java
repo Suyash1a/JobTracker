@@ -1,4 +1,5 @@
 package com.jobtracker.jobtracker.controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.jobtracker.jobtracker.dto.JobDto;
 import com.jobtracker.jobtracker.enums.ApplicationStatus;
 import com.jobtracker.jobtracker.service.JobService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/jobs")
 @RequiredArgsConstructor
