@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const API_URL = 'http://54.167.91.130:8080/api/jobs';
+const API_URL = 'http://52.54.113.243:8080/api/jobs';
 
 const inputStyle = {
     background: '#2d3748',

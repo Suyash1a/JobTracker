@@ -5,7 +5,7 @@ import JobCard from './JobCard';
 import AddJobForm from './AddJobForm';
 import StatsPanel from './StatsPanel';
 
-const API_URL = 'http://54.167.91.130:8080/api/jobs';
+const API_URL = 'http://52.54.113.243:8080/api/jobs';
 
 const COLUMNS = [
     { id: 'Applied', label: '📨 Applied', color: '#3182ce' },
